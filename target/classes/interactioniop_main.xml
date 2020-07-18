@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="2fb2980e-db00-4e34-aafe-912b4f30fc1b" basePath="interactionIOP" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="interactioniop_mainFlow" doc:id="dc5c8687-33aa-4170-b4fc-7dea7e95cf5d" >
+		<http:listener doc:name="InteractionIOP-Main" doc:id="ba5e9a9e-23e6-4610-9056-2afcf1fa5cc8" config-ref="HTTP_Listener_config" path="/api/getContext"/>
+		<logger level="INFO" doc:name="InteractionIOP- STartLogger" doc:id="461880dc-7f08-4285-9d8d-6b1c12466eaa" message='"Get the logger data": #[payload]'/>
+	</flow>
+</mule>
